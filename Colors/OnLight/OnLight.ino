@@ -5,7 +5,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
-  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(buttonPin, INPUT);
   pinMode(lightPin, OUTPUT);
 
   digitalWrite(lightPin, LOW);
@@ -14,15 +14,14 @@ void setup() {
 void loop() {
   if (!flagDone) {
     int buttonValue = digitalRead(buttonPin);
-    Serial.println(buttonValue);
+//    Serial.println(buttonValue);
     if (buttonValue) {
       digitalWrite(lightPin, HIGH);
-      delay(11000);
+      delay(10000);
       digitalWrite(lightPin, LOW);
       delay(1000);
       flagDone = true;
     }
   }
-  Serial.println("AAAAA");
-  delay(1000);
+  delay(100);
 }
