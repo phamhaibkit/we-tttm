@@ -1,26 +1,86 @@
-#include <Wire.h> 
+#include <Wire.h>
 #include "LiquidCrystal_I2C.h"
 
-// Set the LCD address to 0x27 for a 16 chars and 2 line display
+// Set the LCD address to 0x27 for a 16 chars and 2 line Line
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+int timeStonePin = 2;
+int powerStonePin = 3;
+int spaceStonePin = 4;
+int doorPin = 5;
+
+double timeOff = 300000;
+
+String timeDisplay = "Wakanda-31890";
+String powerDisplay  = "Asgard-96572";
+String spaceDisplay = "Sanctuary N5X2";
+
+
+bool flagTimeStone = true;
+bool flagPowerStone = false;
+bool flagSpaceStone = false;
 
 void setup()
 {
+  Serial.begin(9600);
+  pinMode(timeStonePin, INPUT_PULLUP);
+  pinMode(powerStonePin, INPUT_PULLUP);
+  pinMode(spaceStonePin, INPUT_PULLUP);
+
+  pinMode(doorPin, OUTPUT);
+  digitalWrite(doorPin, LOW);
   // initialize the LCD
   lcd.begin();
-
-  // Turn on the blacklight and print a message.
+  //  // Turn on the blacklight and print a message.
   lcd.backlight();
   lcd.clear();
 }
 
 void loop()
 {
-  // Do nothing here...
-//  lcd.clear();
-  lcd.print("Robojax");
-  lcd.setCursor (0,1); // go to start of 2nd line
- lcd.print("Hello World!");
-  //lcd.print(millis() / 1000);
-//  delay(500);
+  if (flagTimeStone) {
+    int timeStoneValue = digitalRead(timeStonePin);
+//    Serial.print("Time Stone: ");
+//    Serial.println(timeStoneValue);
+    if (!timeStoneValue) {
+      Serial.print("Time duoc nhan ");
+      displayText(timeDisplay);
+      flagTimeStone = false;
+      flagPowerStone = true;
+      delay(timeOff);
+      lcd.clear();
+    }
+  }
+
+  if (flagPowerStone) {
+    int powerStoneValue = digitalRead(powerStonePin);
+//    Serial.print("Power Stone: ");
+//    Serial.println(powerStoneValue);
+    if (!powerStoneValue) {
+      Serial.print("Power duoc nhan ");
+      displayText(powerDisplay);
+      flagPowerStone = false;
+      flagSpaceStone = true;
+      delay(timeOff);
+      lcd.clear();
+    }
+  }
+
+  if (flagSpaceStone) {
+    int spaceStoneValue = digitalRead(spaceStonePin);
+//    Serial.print("Space Stone: ");
+//    Serial.println(spaceStoneValue);
+    if (!spaceStoneValue) {
+      Serial.print("Space duoc nhan ");
+      displayText(spaceDisplay);
+      digitalWrite(doorPin, HIGH);
+      flagSpaceStone = false;
+    }
+  }
+}
+
+void displayText(String text) {
+  lcd.clear();
+  lcd.setCursor (0, 0);
+  lcd.print(text);
 }

@@ -19,9 +19,9 @@ void setup() {
     Serial.println(F("Unable to begin:"));
     Serial.println(F("1.Please recheck the connection!"));
     Serial.println(F("2.Please insert the SD card!"));
-    //while(true);
+    while(true);
   }
-  delay(2000);
+  delay(500);
   Serial.println(F("DFPlayer Mini online."));
 
   myDFPlayer.volume(30);  //Set volume value. From 0 to 30
@@ -31,7 +31,7 @@ void setup() {
 void loop() {
   if (!flagPlay) {
     int valueStonne = digitalRead(stonePin);
-    Serial.println(valueStonne);
+//    Serial.println(valueStonne);
     if (!valueStonne) {
       Serial.println("Bai 1");
       myDFPlayer.play(1);
