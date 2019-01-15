@@ -32,7 +32,7 @@ void loop() {
   if (!flagPlay) {
     int valueStonne = digitalRead(stonePin);
     Serial.println(valueStonne);
-    if (!valueStonne) {
+    if (valueStonne) {
       Serial.println("Bai 1");
       myDFPlayer.play(1);
       delay(500);
