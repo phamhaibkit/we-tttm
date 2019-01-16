@@ -36,6 +36,7 @@ const byte Seg[10] = {
 static unsigned long point = 20;
 
 void setup() {
+  Serial.begin(9600);
   //Bạn BUỘC PHẢI pinMode các chân này là OUTPUT
   pinMode(latchPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
@@ -82,6 +83,21 @@ void loop() {
     }
     point--;
     delay(1000);
+  }
+
+  int valueLaser = analogRead(quangtroPin);
+  Serial.println(valueLaser);
+  if (valueLaser < 850) {
+//    Serial.println("TROOMOMOMOMOMOMOMO");
+    digitalWrite(beepPin, HIGH);
+    if (point == 0) {
+      return;
+    }
+    point--;
+    delay(1000);
+  } else {
+//    Serial.println("ANTOANTOATNOATNOATN");
+    digitalWrite(beepPin, LOW);
   }
 
   HienThiLED7doan(point, 2);
