@@ -1,19 +1,18 @@
 #include "SoftwareSerial.h"
 #include "DFRobotDFPlayerMini.h"
 
-SoftwareSerial mySoftwareSerial(4, 5); // RX, TX
+SoftwareSerial mySoftwareSerial(10, 11); // RX, TX
 DFRobotDFPlayerMini myDFPlayer;
 
 int buttonPin = 2;
+bool flag = false;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   mySoftwareSerial.begin(9600);
 
-  pinMode(buttonPin, INPUT);
-  //attachInterrupt(0, openDoor, RISING);
-  digitalWrite(buttonPin, LOW);
+  pinMode(buttonPin, INPUT_PULLUP);
 
   Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
 
@@ -30,28 +29,33 @@ void setup() {
 }
 
 void loop() {
-  int valuePin = digitalRead(buttonPin);
-  Serial.print("Gia tri nut nhan ");
-  Serial.println(valuePin);
-  if (valuePin) {
-    playAudio();
-    delay(11000);
-    playAudio();
-    while (1) {
+  if (!flag) {
+    int valuePin = digitalRead(buttonPin);
+    Serial.print("Gia tri nut nhan ");
+    Serial.println(valuePin);
+    if (!valuePin) {
+      playAudio();
+      delay(29000); // Cho bai hat cuoi cung truoc khi lap
+      delay(10000);
+      playAudio();
+     flag = true;
     }
   }
 }
 
 void playAudio() {
   myDFPlayer.play(1);
-  delay(10000);
+  delay(30000);
   myDFPlayer.stop();
+  delay(3000);
   myDFPlayer.play(2);
-  delay(15000);
+  delay(32000);
   myDFPlayer.stop();
+  delay(3000);
   myDFPlayer.play(3);
-  delay(7000);
+  delay(25000);
   myDFPlayer.stop();
+  delay(3000);
   myDFPlayer.play(4);
 }
 
