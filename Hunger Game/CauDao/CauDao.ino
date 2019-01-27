@@ -28,8 +28,9 @@ void loop() {
     // đọc giá trị hiện tại của button
     for (int thisPin = 0; thisPin < pinCount; thisPin++) {
       buttonState[thisPin] = digitalRead(buttonPin[thisPin]);
-      Serial.print("STT : ");
-      Serial.println(thisPin);
+//      Serial.print("STT : ");
+//      Serial.println(thisPin);
+      Serial.print("Value : ");
       Serial.println(buttonState[thisPin]);
     }
     if (compareArr(buttonState, trueState)) {
