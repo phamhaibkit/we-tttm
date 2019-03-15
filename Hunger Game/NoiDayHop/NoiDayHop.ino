@@ -1,15 +1,15 @@
 
-const int buttonPin[6] = {3, 4, 5, 6, 7, 8};
+const int buttonPin[6] = {3, 4, 5, 6};
 const int doorPin = 12;
 
-int pinCount = 6;
+int pinCount = 4 ;
 
 // Các biến này có thể thay đổi giá trị được
 int buttonPushCounter = 0;   // số button được nhấn
 String trueString = "";
 
-int buttonState[6] = {0, 0, 0, 0, 0, 0};
-int trueState[6] = {0, 0, 0, 0, 1, 1};
+int buttonState[4] = {1, 1, 1, 1};
+int trueState[4] = {0, 0, 0, 0};
 
 bool flagLoop = false;
 

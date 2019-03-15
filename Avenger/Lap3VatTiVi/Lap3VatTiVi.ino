@@ -1,7 +1,8 @@
 #include <IRremote.h> // thư viện hỗ trợ IR remote
 
 IRsend irsend;// gửi tín hiệu hồng hoại
-// ON/OFF 20250AF
+// ON/OFF 20250AF  33706159
+
 // OK 202B04F
 // Tren 202D02F
 // || Duoi 202708F
@@ -16,6 +17,7 @@ IRsend irsend;// gửi tín hiệu hồng hoại
 int buttonPin = 2;    // select the input pin for the potentiometer
 
 bool flagDone = false;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -26,15 +28,20 @@ void setup() {
 void loop() {
   if (!flagDone) {
     int buttonValue = digitalRead(buttonPin);
-//    Serial.println(buttonValue);
+    //    Serial.println(buttonValue);
     if (!buttonValue) {
-      irsend.sendNEC(20250AF, 20);
-      delay(3000);
-      irsend.sendNEC(202B04F, 20);
-      delay(1000);
-      irsend.sendNEC(202B04F, 20);
-      delay(1000);
-      flagDone = true;
+      //      irsend.sendRaw(raw, 68, 38);
+      //      delay(1000);
+      for (int i = 0; i < 3; i++) {
+        irsend.sendNEC(0x20250AF, 32);
+        delay(40);
+      }
+//      irsend.sendNEC(0x20250AF, 32);
+      delay(5000);
+      //      delay(1000);
+      //      irsend.sendNEC(0x202B04F, 32);
+      //      delay(1000);
+      //      flagDone = true;
     }
   }
   delay(100);
