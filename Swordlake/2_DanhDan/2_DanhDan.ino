@@ -46,23 +46,23 @@ void loop() {
   Serial.println(valueRay2);
   Serial.print("Ray 3: ");
   Serial.println(valueRay3);
-  if (valueRay1 < 300) {
+  if (valueRay1 < 880) {
     myDFPlayer.play(1);
     trueString = trueString + '1';
     count++;
-    delay(1000);
+    delay(500);
   }
-  if (valueRay2 < 300) {
+  if (valueRay2 < 880) {
     myDFPlayer.play(2);
     trueString = trueString + '2';
     count++;
-    delay(1000);
+    delay(500);
   }
-  if (valueRay3 < 300) {
+  if (valueRay3 < 880) {
     myDFPlayer.play(3);
     trueString = trueString + '3';
     count++;
-    delay(1000);
+    delay(500);
   }
   if (count == 3) {
     if (trueString == "123") {
@@ -79,6 +79,5 @@ void loop() {
       count = 0;
     }
   }
-  //  delay(2000);
 }
 
