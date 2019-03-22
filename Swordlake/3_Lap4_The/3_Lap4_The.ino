@@ -1,6 +1,7 @@
 
 int tagPin = 2;    // select the input pin for the potentiometer
 int doorPin = 12;
+int lightPin = 11;
 
 bool flagDone = false;
 
@@ -9,7 +10,9 @@ void setup() {
   Serial.begin(9600);
   pinMode(tagPin, INPUT_PULLUP);
   pinMode(doorPin, OUTPUT);
-  digitalWrite(doorPin, LOW);
+  pinMode(lightPin, OUTPUT);
+  digitalWrite(doorPin, HIGH);
+  digitalWrite(lightPin, HIGH);
 }
 
 void loop() {
@@ -18,7 +21,8 @@ void loop() {
     Serial.println(buttonValue);
     if (buttonValue) {
       Serial.println("Dung CMNR CMNR CMNR");
-      digitalWrite(doorPin, HIGH);
+      digitalWrite(doorPin, LOW);
+      digitalWrite(lightPin, LOW);
       delay(1000);
       flagDone = true;
     }
