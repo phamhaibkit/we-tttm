@@ -33,13 +33,13 @@ RFID rfid_2(SS_PIN_2, RST_PIN_2);
 int doorPin = A0;
 int namchamPin = 2;
 
-int tag[5] = {176, 219 , 251, 26, 138};
-int tag_1[5] = {170, 69, 224, 111, 96};
-int tag_2[5] = {154, 51, 214, 111, 16};
+int tag[5] = {246, 202, 32, 249, 229};
+int tag_1[5] = {198, 183, 27, 249, 147};
+int tag_2[5] = {91, 249, 159, 89, 100};
 
-int tagB[5] = {224, 234 , 45, 26, 61};
-int tagB_1[5] = {224 , 106, 123, 26, 235};
-int tagB_2[5] = {224, 178, 130, 26, 202};
+int tagB[5] = {230, 96, 27, 249, 100};
+int tagB_1[5] = {166, 83, 194, 249, 206};
+int tagB_2[5] = {95, 183, 192, 73, 97};
 
 int newtag[5] = {0, 0, 0, 0, 0};
 int newtag_1[5] = {0, 0, 0, 0, 0};
@@ -133,6 +133,7 @@ void readTags()
                 myDFPlayer.play(1);
                 delay(1000);
                 while (1) {
+//                  Serial.println("LOOOPLOOPLOOOP---------");
                 }
               }
             }
