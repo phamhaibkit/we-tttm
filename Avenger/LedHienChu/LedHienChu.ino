@@ -38,10 +38,13 @@ void setup()
 
 void loop()
 {
+  int timeStoneValue = digitalRead(timeStonePin);
+  int powerStoneValue = digitalRead(powerStonePin);
+  int spaceStoneValue = digitalRead(spaceStonePin);
+
   if (flagTimeStone) {
-    int timeStoneValue = digitalRead(timeStonePin);
-//    Serial.print("Time Stone: ");
-//    Serial.println(timeStoneValue);
+    //    Serial.print("Time Stone: ");
+    //    Serial.println(timeStoneValue);
     if (!timeStoneValue) {
       Serial.print("Time duoc nhan ");
       displayText(timeDisplay);
@@ -53,10 +56,9 @@ void loop()
   }
 
   if (flagPowerStone) {
-    int powerStoneValue = digitalRead(powerStonePin);
-//    Serial.print("Power Stone: ");
-//    Serial.println(powerStoneValue);
-    if (!powerStoneValue) {
+    //    Serial.print("Power Stone: ");
+    //    Serial.println(powerStoneValue);
+    if (!timeStoneValue && !powerStoneValue) {
       Serial.print("Power duoc nhan ");
       displayText(powerDisplay);
       flagPowerStone = false;
@@ -64,13 +66,13 @@ void loop()
       delay(timeOff);
       lcd.clear();
     }
+
   }
 
   if (flagSpaceStone) {
-    int spaceStoneValue = digitalRead(spaceStonePin);
-//    Serial.print("Space Stone: ");
-//    Serial.println(spaceStoneValue);
-    if (!spaceStoneValue) {
+    //    Serial.print("Space Stone: ");
+    //    Serial.println(spaceStoneValue);
+    if (!timeStoneValue && !powerStoneValue && !spaceStoneValue) {
       Serial.print("Space duoc nhan ");
       displayText(spaceDisplay);
       digitalWrite(doorPin, HIGH);
