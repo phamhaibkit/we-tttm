@@ -8,7 +8,10 @@ int clockPin = 12;
 //Chân DS của 74HC595
 int dataPin = 11;
 
-int quangtroPin = A5;
+int laserPin1 = A5;
+int laserPin2 = A4;
+int laserPin3 = A3;
+int laserPin4 = A2;
 int cungPin = 2;
 int treoPin = 3;
 int beepPin = 5;
@@ -85,10 +88,22 @@ void loop() {
     delay(1000);
   }
 
-  int valueLaser = analogRead(quangtroPin);
+  readLaser(laserPin1);
+  readLaser(laserPin2);
+  readLaser(laserPin3);
+  readLaser(laserPin4);
+
+  HienThiLED7doan(point, 2);
+
+  //  delay(500);//Đợi 0.5 s cho mỗi lần tăng số
+}
+
+void readLaser(int pin) {
+  int valueLaser = analogRead(pin);
+  Serial.print("Value-");
+  Serial.println(pin);
   Serial.println(valueLaser);
   if (valueLaser < 850) {
-//    Serial.println("TROOMOMOMOMOMOMOMO");
     digitalWrite(beepPin, HIGH);
     if (point == 0) {
       return;
@@ -96,11 +111,7 @@ void loop() {
     point--;
     delay(1000);
   } else {
-//    Serial.println("ANTOANTOATNOATNOATN");
     digitalWrite(beepPin, LOW);
   }
-
-  HienThiLED7doan(point, 2);
-
-  //  delay(500);//Đợi 0.5 s cho mỗi lần tăng số
 }
+
