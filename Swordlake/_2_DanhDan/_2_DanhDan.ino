@@ -50,22 +50,24 @@ void loop() {
     myDFPlayer.play(1);
     trueString = trueString + '1';
     count++;
-    delay(500);
+    delay(300);
   }
   if (valueRay2 < 880) {
     myDFPlayer.play(2);
     trueString = trueString + '2';
     count++;
-    delay(500);
+    delay(300);
   }
   if (valueRay3 < 880) {
     myDFPlayer.play(3);
     trueString = trueString + '3';
     count++;
-    delay(500);
+    delay(300);
   }
-  if (count == 3) {
-    if (trueString == "123") {
+  Serial.print("Count==== ");
+  Serial.println(count);
+  if (count >= 12) {
+    if (trueString == "123212321222") {
       Serial.print("Dung roi mo cua ra ");
       digitalWrite(doorPin, LOW);
       digitalWrite(ledPin, LOW);
