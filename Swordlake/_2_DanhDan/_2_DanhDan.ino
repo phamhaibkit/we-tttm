@@ -8,7 +8,7 @@ int ray1 = A0;
 int ray2 = A1;
 int ray3 = A2;
 
-int doorPin = 11;
+int doorPin = 9;
 int ledPin = 12;
 
 String trueString = "";
