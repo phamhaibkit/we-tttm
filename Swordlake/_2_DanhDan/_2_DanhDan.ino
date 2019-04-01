@@ -50,19 +50,19 @@ void loop() {
     myDFPlayer.play(1);
     trueString = trueString + '1';
     count++;
-    delay(300);
+    delay(500);
   }
   if (valueRay2 < 880) {
     myDFPlayer.play(2);
     trueString = trueString + '2';
     count++;
-    delay(300);
+    delay(500);
   }
   if (valueRay3 < 880) {
     myDFPlayer.play(3);
     trueString = trueString + '3';
     count++;
-    delay(300);
+    delay(500);
   }
   Serial.print("Count==== ");
   Serial.println(count);
