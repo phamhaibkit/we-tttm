@@ -10,15 +10,15 @@ const int lightPin = 8;
 const int lockPin = 7;
 int pinCount = 9;
 
-int compare1 = 690;
-int compare2 = 693;
-int compare3 = 697;
-int compare4 = 700;
-int compare5 = 704;
-int compare6 = 709;
-int compare7 = 714;
-int compare8 = 723;
-int compare9 = 730;
+int compare1 = 680;
+int compare2 = 660;
+int compare3 = 640;
+int compare4 = 620;
+int compare5 = 600;
+int compare6 = 580;
+int compare7 = 565;
+int compare8 = 540;
+int compare9 = 520;
 
 void setup() {
   Serial.begin(9600);
@@ -49,43 +49,43 @@ void setup() {
 
 void loop() {
 //  int soundValue =  avaragValue();
-  int soundValue = analogRead(soundPin);
+  int soundValue = avaragValue(5);
   Serial.print("soundValue 1: ");
   Serial.println(soundValue);
-  if (soundValue < compare1) {
+  if (soundValue > compare1) {
     clearLed();
   }
 
-  else if ((soundValue > compare1) && (soundValue < compare2)) {
+  else if ((soundValue <= compare1) && (soundValue > compare2)) {
     onLed(1);
   }
 
-  else if ((soundValue >= compare2) && (soundValue < compare3)) {
+  else if ((soundValue <= compare2) && (soundValue > compare3)) {
     onLed(2);
   }
-  else if ((soundValue >= compare3) && (soundValue < compare4)) {
+  else if ((soundValue <= compare3) && (soundValue > compare4)) {
     onLed(3);
   }
-  else if ((soundValue >= compare4) && (soundValue < compare5)) {
+  else if ((soundValue <= compare4) && (soundValue > compare5)) {
     onLed(4);
   }
 
-  else if ((soundValue >= compare5) && (soundValue < compare6)) {
+  else if ((soundValue <= compare5) && (soundValue > compare6)) {
     onLed(5);
   }
 
-  else if ((soundValue >= compare6) && (soundValue < compare7)) {
+  else if ((soundValue <= compare6) && (soundValue > compare7)) {
     onLed(6);
   }
 
-  else if ((soundValue >= compare7) && (soundValue < compare8)) {
+  else if ((soundValue <= compare7) && (soundValue > compare8)) {
     onLed(7);
   }
 
-  else if ((soundValue >= compare8) && (soundValue < compare9)) {
+  else if ((soundValue <= compare8) && (soundValue > compare9)) {
     onLed(8);
   }
-  else if (soundValue >= compare9) {
+  else if (soundValue <= compare9) {
     onLed(9);
     myDFPlayer.play(1);
     digitalWrite(lightPin, HIGH);
@@ -98,13 +98,13 @@ void loop() {
   delay(300);
 }
 
-int avaragValue() {
+int avaragValue(int num) {
   int totalValue = 0;
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < num; i++) {
     int soundValue = analogRead(soundPin);
     totalValue += soundValue;
   }
-  return totalValue / 10;
+  return totalValue / num;
 }
 
 void onLed(int numberic) {
