@@ -43,14 +43,14 @@ void loop()
   Serial.print(" UV Intensity (mW/cm^2): ");
   Serial.print(uvIntensity);
 
-  if(uvIntensity > 0.65){
+  if(uvIntensity > 0.35){
       digitalWrite(doorPin, LOW);
       while(true);
     }
   
   Serial.println();
   
-  delay(100);
+  delay(200);
 }
 
 //Takes an average of readings on a given pin
