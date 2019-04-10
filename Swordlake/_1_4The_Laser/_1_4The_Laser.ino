@@ -8,7 +8,6 @@
   RST: Pin 9
 */
 
-
 #include <SPI.h>
 #include "RFID.h"
 
@@ -24,11 +23,11 @@ RFID rfid_1(SS_PIN_1, RST_PIN_1);
 int doorPin = 3;
 int namchamPin = 2;
 
-int tag[5] = {182, 209, 193, 249, 95};
-int tag_1[5] = {150, 249, 183, 249, 33};
+int tag[5] = {230, 186, 191, 249, 26};
+int tag_1[5] = {54, 39, 193, 249, 41};
 
-int tagB[5] = {230, 186, 191, 249, 26};
-int tagB_1[5] = {54, 39, 193, 249, 41};
+int tagB[5] = {182, 209, 193, 249, 95};
+int tagB_1[5] = {150, 249, 183, 249, 33};
 
 int newtag[5] = {0, 0, 0, 0, 0};
 int newtag_1[5] = {0, 0, 0, 0, 0};
