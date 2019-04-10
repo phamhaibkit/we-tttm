@@ -19,7 +19,7 @@ void loop() {
   if (!flagDone) {
     int buttonValue = digitalRead(tagPin);
     Serial.println(buttonValue);
-    if (buttonValue) {
+    if (!buttonValue) {
       Serial.println("Dung CMNR CMNR CMNR");
       digitalWrite(doorPin, LOW);
       digitalWrite(lightPin, LOW);
