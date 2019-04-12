@@ -47,8 +47,9 @@ void loop() {
     Serial.println("Value tag 1: ");
     Serial.println(valueStonne1);
     if (!valueStonne1) {
-      digitalWrite(ledPin[1], LOW);
-      digitalWrite(ledPin[2], LOW);
+      digitalWrite(ledPin[0], LOW);
+      digitalWrite(ledPin[3], LOW);
+      digitalWrite(ledPin[5], LOW);
       Serial.println("Bai 1");
       myDFPlayer.play(1);
       delay(500);
@@ -60,8 +61,7 @@ void loop() {
     Serial.println("Value tag 2: ");
     Serial.println(valueStonne2);
     if (!valueStonne2) {
-      digitalWrite(ledPin[0], LOW);
-      digitalWrite(ledPin[3], LOW);
+      digitalWrite(ledPin[4], LOW);
       Serial.println("Bai 2");
       myDFPlayer.play(2);
       delay(500);
@@ -74,8 +74,8 @@ void loop() {
     Serial.println("Value tag 3: ");
     Serial.println(valueStonne3);
     if (!valueStonne3) {
-      digitalWrite(ledPin[4], LOW);
-      digitalWrite(ledPin[5], LOW);
+      digitalWrite(ledPin[1], LOW);
+      digitalWrite(ledPin[2], LOW);
       Serial.println("Bai 3");
       myDFPlayer.play(3);
       delay(500);
