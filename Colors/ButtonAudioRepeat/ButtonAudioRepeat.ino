@@ -34,29 +34,13 @@ void loop() {
     Serial.print("Gia tri nut nhan ");
     Serial.println(valuePin);
     if (!valuePin) {
-      playAudio();
-      delay(29000); // Cho bai hat cuoi cung truoc khi lap
-      delay(10000);
-      playAudio();
-     flag = true;
+      myDFPlayer.play(1);
+      delay(30000); // Cho bai hat cuoi cung truoc khi lap
+      myDFPlayer.play(1);
+      flag = true;
     }
   }
 }
 
-void playAudio() {
-  myDFPlayer.play(1);
-  delay(30000);
-  myDFPlayer.stop();
-  delay(3000);
-  myDFPlayer.play(2);
-  delay(32000);
-  myDFPlayer.stop();
-  delay(3000);
-  myDFPlayer.play(3);
-  delay(25000);
-  myDFPlayer.stop();
-  delay(3000);
-  myDFPlayer.play(4);
-}
 
 
