@@ -6,19 +6,19 @@ DFRobotDFPlayerMini myDFPlayer;
 
 int soundPin = A5;
 const int ledPin[9] = {A0, A1, A2, A3, A4, 12, 11, 10, 9};
-const int lightPin = 8;
+const int lightPin = 2;
 const int lockPin = 7;
 int pinCount = 9;
 
-int compare1 = 680;
-int compare2 = 660;
-int compare3 = 640;
-int compare4 = 620;
-int compare5 = 600;
-int compare6 = 580;
-int compare7 = 565;
-int compare8 = 540;
-int compare9 = 520;
+int compare1 = 645;
+int compare2 = 643;
+int compare3 = 641;
+int compare4 = 639;
+int compare5 = 637;
+int compare6 = 635;
+int compare7 = 633;
+int compare8 = 631;
+int compare9 = 629;
 
 void setup() {
   Serial.begin(9600);
@@ -30,8 +30,8 @@ void setup() {
   }
   pinMode(lightPin, OUTPUT); // Cài đặt đèn LED là OUTPUT
   pinMode(lockPin, OUTPUT); // Cài đặt đèn LED là OUTPUT
-  digitalWrite(lightPin, LOW);
-  digitalWrite(lockPin, LOW);
+  digitalWrite(lightPin, HIGH);
+  digitalWrite(lockPin, HIGH);
 
   Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
 
@@ -88,13 +88,14 @@ void loop() {
   else if (soundValue <= compare9) {
     onLed(9);
     myDFPlayer.play(1);
-    digitalWrite(lightPin, HIGH);
-    digitalWrite(lockPin, HIGH);
+    digitalWrite(lightPin, LOW);
+    digitalWrite(lockPin, LOW);
     delay(1000);
     while (1) {
       //      Serial.print("WHILE--");
     }
   }
+
   delay(300);
 }
 

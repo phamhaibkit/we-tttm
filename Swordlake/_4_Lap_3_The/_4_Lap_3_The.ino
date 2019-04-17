@@ -47,11 +47,12 @@ void loop() {
     Serial.println("Value tag 1: ");
     Serial.println(valueStonne1);
     if (!valueStonne1) {
+      Serial.println("Bai 1");
+      myDFPlayer.play(1);
+      delay(21000);
       digitalWrite(ledPin[0], LOW);
       digitalWrite(ledPin[3], LOW);
       digitalWrite(ledPin[5], LOW);
-      Serial.println("Bai 1");
-      myDFPlayer.play(1);
       delay(500);
       flag1 = true;
     }
