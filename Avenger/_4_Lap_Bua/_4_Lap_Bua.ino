@@ -31,7 +31,9 @@ void loop()
     if (!hammerValue) {
       digitalWrite(doorPin1, LOW);
       digitalWrite(doorPin2, LOW);
-      delay(1000);
+      delay(1500);
+      digitalWrite(doorPin1, HIGH);
+      digitalWrite(doorPin2, HIGH);
       flag = true;
     }
     delay(300);
