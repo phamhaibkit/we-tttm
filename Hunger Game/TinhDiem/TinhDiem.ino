@@ -12,9 +12,10 @@ int laserPin1 = A5;
 int laserPin2 = A4;
 int laserPin3 = A3;
 int laserPin4 = A2;
-int cungPin = 2;
-int treoPin = 3;
-int beepPin = 5;
+int cungPin1 = 2;
+int cungPin2 = 3;
+int treoPin = 5;
+int beepPin = 6;
 
 // Ta sẽ xây dựng mảng hằng số với các giá trị cho trước
 // Các bit được đánh số thứ tự (0-7) từ phải qua trái (tương ứng với A-F,DP)
@@ -45,7 +46,8 @@ void setup() {
   pinMode(clockPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
 
-  pinMode(cungPin, INPUT_PULLUP);
+  pinMode(cungPin1, INPUT_PULLUP);
+  pinMode(cungPin2, INPUT_PULLUP);
   pinMode(treoPin, INPUT_PULLUP);
 
   pinMode(beepPin, OUTPUT);
@@ -70,18 +72,27 @@ void HienThiLED7doan(unsigned long Giatri, byte SoLed = 2) {
 
 
 void loop() {
-  int valueCung = digitalRead(cungPin);
-  if (!valueCung) {
-    if (point == 99) {
+  int valueCung1 = digitalRead(cungPin1);
+  if (!valueCung1) {
+    if (point >= 99) {
       return;
     }
     point++;
     delay(1000);
   }
 
+  int valueCung2 = digitalRead(cungPin2);
+  if (!valueCung2) {
+    if (point >= 99) {
+      return;
+    }
+    point = point + 2;
+    delay(1000);
+  }
+
   int valueTreo = digitalRead(treoPin);
   if (!valueTreo) {
-    if (point == 0) {
+    if (point <= 0) {
       return;
     }
     point--;
@@ -105,7 +116,7 @@ void readLaser(int pin) {
   Serial.println(valueLaser);
   if (valueLaser < 850) {
     digitalWrite(beepPin, HIGH);
-    if (point == 0) {
+    if (point <= 0) {
       return;
     }
     point--;
