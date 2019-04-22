@@ -14,6 +14,9 @@ bool flag1 = false;
 bool flag2 = false;
 bool flag3 = false;
 
+int lastButtonState = 1;
+int count = 0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -61,13 +64,31 @@ void loop() {
     int valueStonne2 = digitalRead(stonePin2);
     Serial.println("Value tag 2: ");
     Serial.println(valueStonne2);
-    if (!valueStonne2) {
-      digitalWrite(ledPin[4], LOW);
-      Serial.println("Bai 2");
-      myDFPlayer.play(2);
-      delay(500);
-      flag2 = true;
+    if (valueStonne2 != lastButtonState) {
+      if (!valueStonne2) {
+        count++;
+        digitalWrite(ledPin[4], LOW);
+        Serial.println("Bai 2");
+        myDFPlayer.play(2);
+        delay(50000);
+        //        flag2 = true;
+      } else  //Nếu nút đang thả
+      {
+        Serial.println("off");
+      }
     }
+    lastButtonState = valueStonne2;
+    if (count >= 2) {
+      flag2 = true;
+      count = 0;
+    }
+    //    if (!valueStonne2) {
+    //      digitalWrite(ledPin[4], LOW);
+    //      Serial.println("Bai 2");
+    //      myDFPlayer.play(2);
+    //      delay(500);
+    //      flag2 = true;
+    //    }
   }
 
   if (!flag3) {
