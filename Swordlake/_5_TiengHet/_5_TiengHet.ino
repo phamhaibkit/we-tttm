@@ -10,15 +10,15 @@ const int lightPin = 2;
 const int lockPin = 7;
 int pinCount = 9;
 
-int compare1 = 645;
-int compare2 = 643;
-int compare3 = 641;
-int compare4 = 639;
-int compare5 = 637;
-int compare6 = 635;
-int compare7 = 633;
-int compare8 = 631;
-int compare9 = 629;
+int compare1 = 635;
+int compare2 = 630;
+int compare3 = 625;
+int compare4 = 620;
+int compare5 = 615;
+int compare6 = 610;
+int compare7 = 605;
+int compare8 = 590;
+int compare9 = 570;
 
 void setup() {
   Serial.begin(9600);
