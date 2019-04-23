@@ -16,6 +16,7 @@ int cungPin1 = 2;
 int cungPin2 = 3;
 int treoPin = 5;
 int beepPin = 6;
+int beepPin1 = 7;
 
 // Ta sẽ xây dựng mảng hằng số với các giá trị cho trước
 // Các bit được đánh số thứ tự (0-7) từ phải qua trái (tương ứng với A-F,DP)
@@ -52,6 +53,9 @@ void setup() {
 
   pinMode(beepPin, OUTPUT);
   digitalWrite(beepPin, LOW);
+
+  pinMode(beepPin1, OUTPUT);
+  digitalWrite(beepPin1, LOW);
 }
 
 void HienThiLED7doan(unsigned long Giatri, byte SoLed = 2) {
@@ -92,11 +96,14 @@ void loop() {
 
   int valueTreo = digitalRead(treoPin);
   if (!valueTreo) {
+    digitalWrite(beepPin1, HIGH);
     if (point <= 0) {
       return;
     }
     point--;
     delay(1000);
+  } else {
+    digitalWrite(beepPin1, LOW);
   }
 
   readLaser(laserPin1);
