@@ -49,32 +49,15 @@ void loop() {
   /* In kết quả ra Serial Monitor */
   Serial.print(distance);
   Serial.println("cm");
-  //  if (distance < 50) {
-  //    count++;
-  //  }
-  //  if (count >= 2) {
-  //    myDFPlayer.play(1);
-  //    delay(1000);
-  //    while (1) {
-  //    }
-  //  }
-  if ((distance > 0) && (distance < 20)) {
+  if (distance < 200) {
+    count++;
+  }
+  if (count >= 3) {
     myDFPlayer.play(1);
-    delay(3000);
-  }
-
-  if ((distance >= 20) && (distance < 40)) {
-    myDFPlayer.play(2);
-    delay(3000);
-  }
-  if ((distance >= 40) && (distance < 60)) {
-    myDFPlayer.play(3);
-    delay(3000);
-  }
-  if ((distance >= 60) && (distance < 100)) {
-    myDFPlayer.play(4);
-    delay(3000);
+    count = 0;
+    delay(1000);
+    while (1) {
+    }
   }
   delay(1000);
-  //    myDFPlayer.play(1);
 }

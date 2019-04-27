@@ -11,8 +11,8 @@ int doorPin = 5;
 
 double timeOff = 300000;
 
-String timeDisplay = "Wakanda-31890";
-String powerDisplay  = "Asgard-96572";
+String timeDisplay = "Wakanda-3189";
+String powerDisplay  = "Asgard-9657";
 String spaceDisplay = "Sanctuary N5X2";
 
 
@@ -76,7 +76,11 @@ void loop()
       Serial.print("Space duoc nhan ");
       displayText(spaceDisplay);
       digitalWrite(doorPin, HIGH);
+      delay(1000);
+      flagPowerStone = false;
+      flagTimeStone = false;
       flagSpaceStone = false;
+      while(1){};
     }
   }
 }
