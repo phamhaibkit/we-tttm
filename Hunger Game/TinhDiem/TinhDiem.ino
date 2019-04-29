@@ -96,10 +96,12 @@ void loop() {
 
   int valueTreo = digitalRead(treoPin);
   if (!valueTreo) {
-    digitalWrite(beepPin1, HIGH);
+//    digitalWrite(beepPin1, HIGH);
     if (point <= 0) {
+      digitalWrite(beepPin1, LOW);
       return;
     }
+    digitalWrite(beepPin1, HIGH);
     point--;
     delay(1000);
   } else {
@@ -118,14 +120,16 @@ void loop() {
 
 void readLaser(int pin) {
   int valueLaser = analogRead(pin);
-  Serial.print("Value-");
-  Serial.println(pin);
-  Serial.println(valueLaser);
+//  Serial.print("Value-");
+//  Serial.println(pin);
+//  Serial.println(valueLaser);
   if (valueLaser < 850) {
-    digitalWrite(beepPin, HIGH);
+//    digitalWrite(beepPin, HIGH);
     if (point <= 0) {
+      digitalWrite(beepPin, LOW);
       return;
     }
+    digitalWrite(beepPin, HIGH);
     point--;
     delay(1000);
   } else {
