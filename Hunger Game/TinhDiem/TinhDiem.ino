@@ -79,6 +79,7 @@ void loop() {
   int valueCung1 = digitalRead(cungPin1);
   if (!valueCung1) {
     if (point >= 99) {
+      point = 99;
       return;
     }
     point++;
@@ -88,6 +89,7 @@ void loop() {
   int valueCung2 = digitalRead(cungPin2);
   if (!valueCung2) {
     if (point >= 99) {
+      point = 99;
       return;
     }
     point = point + 2;
@@ -98,6 +100,7 @@ void loop() {
   if (!valueTreo) {
 //    digitalWrite(beepPin1, HIGH);
     if (point <= 0) {
+      point = 0;
       digitalWrite(beepPin1, LOW);
       return;
     }
@@ -126,6 +129,7 @@ void readLaser(int pin) {
   if (valueLaser < 850) {
 //    digitalWrite(beepPin, HIGH);
     if (point <= 0) {
+      point = 0;
       digitalWrite(beepPin, LOW);
       return;
     }
