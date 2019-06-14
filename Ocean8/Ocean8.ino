@@ -8,6 +8,7 @@ int mode3 = 4;
 
 int doorPin = 12;
 bool flag = true;
+int count = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -31,9 +32,14 @@ void loop() {
     flag = true;
   }
   if (!readMode2) {
-    digitalWrite(doorPin, LOW);
-    delay(1000);
-    flag = true;
+    count++;
+    if (count >= 2) {
+      digitalWrite(doorPin, LOW);
+      delay(1000);
+      flag = true;
+      count = 0;
+    }
+
   }
 
   if (!readMode3) {
@@ -49,19 +55,21 @@ void loop() {
     Serial.print("Ray 2: ");
     Serial.println(valueRay2);
 
-    if (valueRay1 < 220) {
+    if (valueRay1 < 190) {
       digitalWrite(doorPin, LOW);
       delay(2000);
     } else {
       digitalWrite(doorPin, HIGH);
     }
-    if (valueRay2 < 220) {
+    if (valueRay2 < 190) {
       digitalWrite(doorPin, LOW);
       delay(2000);
     } else {
       digitalWrite(doorPin, HIGH);
     }
+    delay(50);
   }
+  delay(100);
 
 
 }
